@@ -1,10 +1,8 @@
 using HTTPClient.HTTPC
 using JSON
 
-include("lrCostFunction.jl")
-include("oneVsAll.jl")
-include("predictOneVsAll.jl")
-include("predict.jl")
+include("ex3.jl")
+include("ex3_nn.jl")
 
 global submissionUrl = "https://www-origin.coursera.org/api/onDemandProgrammingImmediateFormSubmissions.v1"
 #=global submissionUrl = "http://localhost:3000"=#
