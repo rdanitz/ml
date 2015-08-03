@@ -1,6 +1,9 @@
 using HTTPClient.HTTPC
 using JSON
 
+include("costFunctionReg.jl")
+include("predict.jl")
+
 global submissionUrl = "https://www-origin.coursera.org/api/onDemandProgrammingImmediateFormSubmissions.v1"
 #=global submissionUrl = "http://localhost:3000"=#
 global email = "robert.danitz@posteo.de"
