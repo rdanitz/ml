@@ -6,9 +6,9 @@ function cost(X, y, λ)
 end
 
 function gradient!(X, y, λ)
+  m = size(X, 1)
   function (θ, dθ)
     gradient!(X, y)(θ, dθ)
-    m = size(X, 1)
     copy!(dθ, dθ + [0, ((λ/m)*θ)[2:end]])
   end
 end

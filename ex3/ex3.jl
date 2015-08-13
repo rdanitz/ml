@@ -13,5 +13,7 @@ function run()
   λ = .1
 
   θs = oneVsAll(X, y, num_labels, λ)
+  
   p = predictOneVsAll(θs, X)
+  println("Training Set Accuracy: ", mean(p .== y) * 100)
 end
