@@ -9,7 +9,7 @@ function gradient!(X, y, λ)
   function (θ, dθ)
     gradient!(X, y)(θ, dθ)
     m = size(X, 1)
-    copy!(dθ, dθ + [0, ((λ/m)*θ)[2:end]])
+    copy!(dθ, dθ + [0, ((λ/m)*θ[2:end])])
   end
 end
 
