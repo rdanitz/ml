@@ -5,6 +5,15 @@ pairs(coll) = map(i -> (coll[i-1], coll[i]), 2:length(coll))
 unroll(Θ) = [Θ[1][:], Θ[2][:]]
 roll(θ, s) = {reshape(θ[1:s[2]*(s[1]+1)], s[2], s[1]+1),
               reshape(θ[1+s[2]*(s[1]+1):end], s[3], s[2]+1)}
+#=roll(θ, s) = reduce((akk, i) -> =#
+#=  let m = i[2]=#
+#=      n = i[1]+1=#
+#=      result = akk[1]=#
+#=      θ = akk[2]=#
+#=      fst = [result, {reshape(θ[1:m*n], m, n)}]=#
+#=      snd = θ[m*n+1:end]=#
+#=      (fst, snd)=#
+#=  end, (Any[], θ), pairs(s))[1]=#
 
 function h(Θ, X)
   a1 = [ones(size(X, 1)) X]
@@ -16,6 +25,14 @@ function h(Θ, X)
   hΘ = a3
   hΘ, z2, a2, z3
 end
+#=function h(Θ, X)=#
+#=  r = reduce((akk, θ) -> let x = akk[end][end]=#
+#=                             z = [ones(size(x, 1)) x] * θ'=#
+#=                             a = sigmoid(z)=#
+#=                             [akk (z, a)]=#
+#=                         end, Any[{X}], Θ)=#
+#=  r[end][end], r=#
+#=end=#
 
 function cost(s, X, y)
   function (θ)
